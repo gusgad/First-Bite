@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import SearchBar from './Components/SearchBar';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
 export default class Main extends Component {
   constructor(props) {
       super(props);
-      this.onPressLearnMore = this.onPressLearnMore.bind(this);
+      this.onForward = this.onForward.bind(this);
   }
-  onPressLearnMore() {
-        
+
+  onForward() {
+      this.props.navigator.push({
+          title: 'Recipes'
+      });
   }
+    
   render() {
     return (
         <View style={styles.container}>
             <View style={styles.logoContainer}>
                 <Text style={styles.logo}>FirstBite</Text>
-                <SearchBar style={styles.searchBar} />
+                <TextInput style={styles.searchBar} placeholder="Add products!" placeholderTextColor='#ffffff' />
             </View>
-            <Button title='Find' style={styles.findButton} onPress={this.onPressLearnMore} color="#FBC02D"></Button>
+            <Button title='Find' style={styles.findButton} onPress={this.onForward} color="#FBC02D"></Button>
         </View>
     );
   }
@@ -44,11 +47,16 @@ const styles = StyleSheet.create({
         fontSize: 36,
         fontWeight: 'bold',
         fontFamily: 'Roboto',
-        color: '#FBC02D'
+        color: '#FBC02D',
+        textShadowColor: '#0000ff',
+        textShadowOffset: {width: 1, height: 1}
     },
     searchBar: {
-        fontFamily: 'Roboto',
-        color: 'white'
+        width: 180,
+        height: 50,
+        fontSize: 20,
+        borderRadius: 1,
+        fontFamily: 'Roboto'
     },
     findButton: {
         flex: 1
