@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
+import * as firebase from "firebase";
 import Main from './app/screens/Main';
 import Recipes from './app/screens/Recipes';
 
@@ -19,8 +20,6 @@ export default class fb extends Component {
   }
     
   render() {
-      
-    
       
     return (
         <Navigator
