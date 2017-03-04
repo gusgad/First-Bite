@@ -13,8 +13,10 @@ export default class Main extends Component {
       this.props.navigator.push({
           title: 'Recipes'
       });
-      
-      fetch('http://10.0.2.2:8081/food').then((response) => console.log(response.json()));
+      fetch('https://jsonplaceholder.typicode.com/posts')
+          .then((response) => {
+              console.log(response.json());
+          })
   }
     
   render() {
