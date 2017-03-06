@@ -13,10 +13,6 @@ export default class Main extends Component {
       this.props.navigator.push({
           title: 'Recipes'
       });
-      fetch('https://jsonplaceholder.typicode.com/posts')
-          .then((response) => {
-              console.log(response.json());
-          })
   }
     
   render() {
@@ -52,7 +48,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'Roboto',
         color: '#FBC02D',
-        textShadowColor: '#0000ff',
+        textShadowColor: '#ffffff',
         textShadowOffset: {width: 1, height: 1}
     },
     searchBar: {
