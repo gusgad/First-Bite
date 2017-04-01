@@ -16,15 +16,20 @@ export default class Recipes extends Component {
       };
   }
   componentDidMount() {
-          fetch('https://api.edamam.com/search?q=chicken&app_id=c74b07dd&app_key=91f9d47438a5ae42f845f10dda26eb5c')
-          .then((response) => {
+    
+          fetch('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=potatoes&limitLicense=false&number=5&ranking=1', {
+              headers: {
+                'X-Mashape-Key': 'WkJT8eg81hmsh7rTfWojaqxJ83uhp1pT07gjsnLUt7DOAZDKsX',
+                  'Accept': 'application/json',
+              }
+            }).then((response) => {
               return response.json();
           })
           .then((data) => {
               this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(data.hits)
+                dataSource: this.state.dataSource.cloneWithRows(data)
               });
-              console.log(data.hits);
+              console.log(data);
           })
         
         
@@ -36,7 +41,7 @@ export default class Recipes extends Component {
             <ListView
               dataSource={this.state.dataSource}
               enableEmptySections={true}
-              renderRow={(data) => <Row food={data.recipe} />}
+              renderRow={(data) => <Row food={data} />}
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
         </View>
@@ -45,4 +50,9 @@ export default class Recipes extends Component {
 }
 
 const styles = StyleSheet.create({
+    separator: {
+        flex: 1,
+        height: StyleSheet.hairlineWidth,
+        backgroundColor: '#EEEEEE',
+      }
 });
