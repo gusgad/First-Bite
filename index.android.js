@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 import Main from './app/screens/Main';
 import Recipes from './app/screens/Recipes';
+import Recipe from './app/screens/Recipe';
 
 export default class fb extends Component {
   constructor(props) {
@@ -15,6 +16,10 @@ export default class fb extends Component {
                  
       if(route.title == 'Recipes') {
           return(<Recipes/>);
+      }
+                 
+      if(route.title == 'Recipe') {
+          return(<Recipe navigator={navigator} />);
       }
   }
     

@@ -15,21 +15,18 @@ export default class Recipes extends Component {
           dataSource: ds.cloneWithRows([])
       };
   }
+    
+    
   componentDidMount() {
     
-          fetch('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=potatoes&limitLicense=false&number=5&ranking=1', {
-              headers: {
-                'X-Mashape-Key': 'WkJT8eg81hmsh7rTfWojaqxJ83uhp1pT07gjsnLUt7DOAZDKsX',
-                  'Accept': 'application/json',
-              }
-            }).then((response) => {
+          fetch('http://food2fork.com/api/search?key=1ac1d8dde20033351e584a6e3f85300e&q=shredded%20chicken').then((response) => {
               return response.json();
           })
           .then((data) => {
               this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(data)
+                dataSource: this.state.dataSource.cloneWithRows(data.recipes)
               });
-              console.log(data);
+              console.log(data.recipes);
           })
         
         
