@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: 'stretch',
+    backgroundColor: '#F5F5F5'
   },
   label: {
     fontSize: 17,
@@ -46,17 +47,29 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Row = (props) => (
-  <TouchableHighlight onPress={function(){console.log('lol')}} style={styles.container}>
-    <Image source={{ uri: props.food.image_url}} style={styles.photo}>
-        <View style={styles.backdropView}>
-            <Text style={styles.label}>
-                  {`${props.food.title}`}
-            </Text>
-        </View>
-    </Image>
-  </TouchableHighlight>
-);
+export const Row = (props) => {
+    
+    const onForward = () => {
+        props.navigator.push({
+          title: 'Recipe'
+      });
+    }
+    
+    return (
+      <TouchableHighlight onPress={onForward} style={styles.container} underlayColor={'white'} activeOpacity={0.8} >
+        <Image source={{ uri: props.food.image_url}} style={styles.photo}>
+            <View style={styles.backdropView}>
+                <Text style={styles.label}>
+                      {`${props.food.title}`}
+                </Text>
+            </View>
+        </Image>
+      </TouchableHighlight>
+    );
+}
+
+
+
 
 
 

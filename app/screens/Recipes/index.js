@@ -38,7 +38,7 @@ export default class Recipes extends Component {
             <ListView
               dataSource={this.state.dataSource}
               enableEmptySections={true}
-              renderRow={(data) => <Row food={data} />}
+              renderRow={(data) => <Row food={data} navigator={this.props.navigator} />}
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
         </View>
