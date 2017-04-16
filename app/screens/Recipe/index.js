@@ -7,24 +7,20 @@ var {width, height} = Dimensions.get('window');
 export default class Recipes extends Component {
   constructor(props) {
       super(props);
+      this.rId = this.props.data;
   }
     
     
   componentDidMount() {
-    
-          fetch('http://food2fork.com/api/search?key=1ac1d8dde20033351e584a6e3f85300e&q=shredded%20chicken').then((response) => {
-              return response.json();
-          })
-          .then((data) => {
-              this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(data.recipes)
-              });
-              console.log(data.recipes);
-          })
-        
-        
-        
+        fetch('http://food2fork.com/api/get?key=1ac1d8dde20033351e584a6e3f85300e&rId=35171').then(response => 
+            response.json().then(data => {
+                return data;
+            })
+        ).then((data) => {
+            console.log(data.recipe.ingredients)
+        })
   }
+    
   render() {
     return (
         <View style={styles.container}>
