@@ -8,6 +8,9 @@ export default class Recipes extends Component {
   constructor(props) {
       super(props);
       this.rId = this.props.data;
+      this.state = {
+          recipe: ''
+      }
   }
     
     
@@ -17,20 +20,30 @@ export default class Recipes extends Component {
                 return data;
             })
         ).then((data) => {
-            console.log(data.recipe.ingredients)
+            console.log(data.recipe)
+            this.setState({
+                recipe: data.recipe
+            })
         })
   }
     
   render() {
     return (
         <View style={styles.container}>
-            <Text>Sup</Text>
+            <Image source={{uri: this.state.recipe.image_url}} style={styles.photo} />
+            <Text>{this.state.recipe.title}</Text>
         </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+    photo: {
+        height: 150,
+        borderRadius: 1,
+        opacity: 0.8,
+        padding: 5
+  },
     separator: {
         flex: 1,
         height: StyleSheet.hairlineWidth,
