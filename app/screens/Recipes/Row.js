@@ -52,7 +52,7 @@ export const Row = (props) => {
     const onForward = () => {
         props.navigator.push({
           title: 'Recipe',
-          route: props.food.recipe_id
+          recipe_id: props.food.recipe_id
       });
     }
     
