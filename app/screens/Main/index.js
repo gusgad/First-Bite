@@ -20,9 +20,12 @@ export default class Main extends Component {
         <View style={styles.container}>
             <View style={styles.logoContainer}>
                 <Text style={styles.logo}>FirstBite</Text>
-                <TextInput style={styles.searchBar} placeholder="Add products!" placeholderTextColor='#ffffff' />
+                <View style={styles.searchBarContainer}>
+                    <Text style={styles.searchBarText}>INGREDIENTS YOU HAVE:</Text>
+                    <TextInput style={styles.searchBar} underlineColorAndroid={'#7b1fa2'} />
+                </View>
             </View>
-            <Button title='Find' style={styles.findButton} onPress={this.onForward} color="#FBC02D"></Button>
+            <Button title='Find' style={styles.findButton} onPress={this.onForward} color={'#f44336'}></Button>
         </View>
     );
   }
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingTop: 30,
         paddingBottom: 30,
-        backgroundColor: '#AD1457'
+        backgroundColor: '#7b1fa2'
     },
     logoContainer: {
         flex: 1,
@@ -47,18 +50,31 @@ const styles = StyleSheet.create({
         fontSize: 36,
         fontWeight: 'bold',
         fontFamily: 'Roboto',
-        color: '#FBC02D',
-        textShadowColor: '#ffffff',
+        color: 'white',
+        textShadowColor: '#ef5350',
         textShadowOffset: {width: 1, height: 1}
+    },
+    searchBarContainer: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    searchBarText: {
+        fontSize: 14,
+        fontFamily: 'Roboto',
+        color: 'white',
+        textShadowColor: '#ef5350'
     },
     searchBar: {
         width: 180,
         height: 50,
         fontSize: 20,
         borderRadius: 1,
-        fontFamily: 'Roboto'
+        fontFamily: 'Roboto',
+        backgroundColor: '#f3e5f5',
+        borderRadius: 10
     },
     findButton: {
-        flex: 1
+        flex: 1,
+        color: 'black'
     }
 });

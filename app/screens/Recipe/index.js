@@ -29,19 +29,21 @@ export default class Recipes extends Component {
                 recipe: data.recipe,
                 ingredients: data.recipe.ingredients
             })
-            //console.log('recipe', this.state.recipe)
         })
   }
     
   render() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{this.state.recipe.title}</Text>
+            <View style={styles.titleContainer}>
+                <Text style={styles.title}>{this.state.recipe.title}</Text>
+            </View>
             <Image source={{uri: this.state.recipe.image_url}} style={styles.photo} />
-            <View>
+            <View style={styles.ingredientsContainer}>
+                <Text style={styles.ingredientsTitle}>Ingredients</Text>
                     {
                         this.state.ingredients.map((ingredient, index) => {
-                            return (<Text key={index}>{ingredient}</Text>);
+                            return (<Text key={index} style={styles.ingredient}>{ingredient}</Text>);
                         })
                     }
             </View>
@@ -51,20 +53,47 @@ export default class Recipes extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+    },
+    titleContainer: {
+        paddingLeft: 10,
+        paddingRight: 10,
+        backgroundColor: '#6c2289'
+    },
     title: {
         fontSize: 20,
         fontFamily: 'sans-serif-thin',
         textAlign: 'center',
-        textDecorationLine: 'underline',
-        color: '#1C1C1C',
-        marginBottom: 5
+        color: 'white',
+        marginBottom: 5,
+        paddingLeft: 10,
+        paddingRight: 10
     },
     photo: {
         height: 200,
         borderRadius: 1,
         opacity: 0.8,
         padding: 5,
-        marginBottom: 15
+        marginBottom: 10
+  },
+  ingredientsContainer: {
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingBottom: 10
+  },
+  ingredientsTitle: {
+        fontSize: 24,
+        fontFamily: 'sans-serif-thin',
+        textAlign: 'center',
+        marginBottom: 10,
+        color: '#424242'
+  },
+  ingredient: {
+       backgroundColor: '#424242',
+       borderRadius: 5,
+       margin: 2,
+       color: 'white',
+       fontFamily: 'monospace'
   },
     separator: {
         flex: 1,

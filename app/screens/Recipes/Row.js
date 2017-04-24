@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: 'stretch',
-    backgroundColor: '#F5F5F5'
+    backgroundColor: '#f3e5f5'
   },
   label: {
     fontSize: 17,
