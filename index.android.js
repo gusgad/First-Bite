@@ -15,7 +15,7 @@ export default class fb extends Component {
       }
                  
       if(route.title == 'Recipes') {
-          return(<Recipes navigator={navigator} />);
+          return(<Recipes navigator={navigator} data={route} />);
       }
                  
       if(route.title == 'Recipe') {

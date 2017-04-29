@@ -6,12 +6,18 @@ var {width, height} = Dimensions.get('window');
 export default class Main extends Component {
   constructor(props) {
       super(props);
+      
+      this.state = {
+          textInputValue: ''
+      }
+      
       this.onForward = this.onForward.bind(this);
   }
 
   onForward() {
       this.props.navigator.push({
-          title: 'Recipes'
+          title: 'Recipes',
+          recipe_search: this.state.textInputValue
       });
   }
     
@@ -22,7 +28,7 @@ export default class Main extends Component {
                 <Text style={styles.logo}>FirstBite</Text>
                 <View style={styles.searchBarContainer}>
                     <Text style={styles.searchBarText}>INGREDIENTS YOU HAVE:</Text>
-                    <TextInput style={styles.searchBar} underlineColorAndroid={'#7b1fa2'} />
+                    <TextInput onChangeText={(text) => this.setState({textInputValue: text})} style={styles.searchBar} underlineColorAndroid={'#7b1fa2'} />
                 </View>
             </View>
             <Button title='Find' style={styles.findButton} onPress={this.onForward} color={'#f44336'}></Button>
