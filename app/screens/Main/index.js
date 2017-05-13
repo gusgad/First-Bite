@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Image, Alert } from 'react-native';
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
@@ -8,7 +8,8 @@ export default class Main extends Component {
       super(props);
       
       this.state = {
-          textInputValue: ''
+          textInputValue: '',
+          warning: false
       }
       
       this.onForward = this.onForward.bind(this);
@@ -16,13 +17,20 @@ export default class Main extends Component {
 
   onForward() {
       if (this.state.textInputValue.length < 1) {
-          console.log("empty")
+          Alert.alert(
+              'Warning',
+              'Please, provide one ore more ingredients.',
+              [
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+              ],
+              { cancelable: true }
+            )
+      } else {
+          this.props.navigator.push({
+              title: 'Recipes',
+              recipe_search: this.state.textInputValue
+          });
       }
-      
-      this.props.navigator.push({
-          title: 'Recipes',
-          recipe_search: this.state.textInputValue
-      });
   }
     
   render() {
@@ -96,3 +104,10 @@ const styles = StyleSheet.create({
         color: 'black'
     }
 });
+
+
+
+
+
+
+
