@@ -41,7 +41,12 @@ export default class Main extends Component {
                 <Text style={styles.logo}>FirstBite</Text>
                 <View style={styles.searchBarContainer}>
                     <Text style={styles.searchBarText}>INGREDIENTS YOU HAVE:</Text>
-                    <TextInput onChangeText={(text) => this.setState({textInputValue: text})} style={styles.searchBar} underlineColorAndroid={'#575757'} />
+                    <TextInput onChangeText={(text) => {
+                                                textVal = text.split(/[ ,]+/);
+                                                this.setState({textInputValue: textVal});
+                                                console.log(textVal);
+                                            }}
+                               style={styles.searchBar} underlineColorAndroid={'#575757'} />
                 </View>
             </View>
             <Button title='Find' style={styles.findButton} onPress={this.onForward} color={'#f44336'}></Button>

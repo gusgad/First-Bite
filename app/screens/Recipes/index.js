@@ -11,7 +11,7 @@ export default class Recipes extends Component {
       super(props);
       const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       
-      this.recipe_search = this.props.data.recipe_search;
+      this.recipe_search = this.props.data.recipe_search.toString();
       this.state = {
           dataSource: ds.cloneWithRows([])
       };
@@ -22,7 +22,7 @@ export default class Recipes extends Component {
     
   componentDidMount() {
     
-          fetch(`http://food2fork.com/api/search?key=1ac1d8dde20033351e584a6e3f85300e&q=shredded%20${this.recipe_search}`).then((response) => {
+          fetch(`http://food2fork.com/api/search?key=1ac1d8dde20033351e584a6e3f85300e&q=${this.recipe_search}`).then((response) => {
               return response.json();
           })
           .then((data) => {
@@ -30,6 +30,9 @@ export default class Recipes extends Component {
                 dataSource: this.state.dataSource.cloneWithRows(data.recipes)
               });
               console.log(data.recipes);
+          })
+          .catch((err) => {
+              // handle the error
           })
         
         
