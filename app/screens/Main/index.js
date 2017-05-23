@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     searchBar: {
         width: 180,
         height: 40,
-        fontSize: 20,
+        fontSize: 18,
         borderRadius: 1,
         fontFamily: 'Roboto',
         backgroundColor: '#f3e5f5',

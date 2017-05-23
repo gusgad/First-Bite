@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Button, TextInput, ListView, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableHighlight, TextInput, ListView, ActivityIndicator } from 'react-native';
 import {Row} from './Row'
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
@@ -69,6 +69,7 @@ export default class Recipes extends Component {
             color="#f44336"
             size="large"
             />
+            <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Back</Text></TouchableHighlight>
             <ListView
               dataSource={this.state.dataSource}
               enableEmptySections={true}
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     separator: {
         flex: 1,
         height: StyleSheet.hairlineWidth,
-        backgroundColor: '#EEEEEE',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
     },
     spinner: {
         position: "absolute",
@@ -95,5 +96,17 @@ const styles = StyleSheet.create({
         width: width,
         height: height,
         backgroundColor: 'rgba(0,0,0,0.8)'
+    },
+    button: {
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        height: 50,
+        backgroundColor: 'rgba(244, 64, 52, 0.87)',
+        paddingLeft: 5
+    },
+    buttonText: {
+        fontSize: 20,
+        fontFamily: 'Roboto',
+        color: 'rgba(0, 0, 0, 0.9)'
     }
 });
