@@ -9,7 +9,7 @@ export default class Main extends Component {
       
       this.state = {
           textInputValue: '',
-          warning: false
+          warning: false,
       }
       
       this.onForward = this.onForward.bind(this);
