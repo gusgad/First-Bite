@@ -24,9 +24,7 @@ export default class Recipes extends Component {
   }
     
   onBack() {
-     this.props.navigator.push({
-        title: 'Main'
-     });
+    navigate('Main');
   }
     
   componentDidMount() {
@@ -49,7 +47,7 @@ export default class Recipes extends Component {
           })
           .catch((err) => {
               // handle the error
-              console.log(err, "not found");
+            console.log(err, "not found");
             navigate('NotFound', { err:  err });
           })
         
@@ -58,6 +56,7 @@ export default class Recipes extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
         <View style={styles.container}>
             <ActivityIndicator
@@ -70,7 +69,7 @@ export default class Recipes extends Component {
             <ListView
               dataSource={this.state.dataSource}
               enableEmptySections={true}
-              renderRow={(data) => <Row food={data} navigator={this.props.navigator} />}
+              renderRow={(data) => <Row food={data} navigator={navigate} />}
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
         </View>

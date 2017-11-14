@@ -7,7 +7,8 @@ var {width, height} = Dimensions.get('window');
 export default class Recipes extends Component {
   constructor(props) {
       super(props);
-      this.rId = this.props.data.recipe_id;
+      console.log('recipe props', this.props.navigation.state.params.recipe_id)
+      this.rId = this.props.navigation.state.params.recipe_id;
       this.state = {
           recipe: '',
           ingredients: []
@@ -20,6 +21,7 @@ export default class Recipes extends Component {
         fetch(`http://food2fork.com/api/get?key=1ac1d8dde20033351e584a6e3f85300e&rId=${this.rId}`)
         .then(response => 
             response.json().then(data => {
+                console.log('response', data)
                 return data;
             })
         )

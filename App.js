@@ -30,6 +30,7 @@ export default class fb extends Component {
 const Screens = StackNavigator({
     Main: {screen: Main},
     Recipes: {screen: Recipes},
+    Recipe: {screen: Recipe},
 });
 
 AppRegistry.registerComponent('first-bite', () => screens);

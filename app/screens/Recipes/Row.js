@@ -47,12 +47,9 @@ const styles = StyleSheet.create({
 });
 
 export const Row = (props) => {
-    
     const onForward = () => {
-        props.navigator.push({
-          title: 'Recipe',
-          recipe_id: props.food.recipe_id
-      });
+        const navigate  = props.navigator;
+        navigate('Recipe', { recipe_id:  props.food.recipe_id });
     }
     
     return (
