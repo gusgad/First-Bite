@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 17,
+	 fontFamily: 'Helvetica Neue',
     color: 'white',
     marginTop: 3,
     fontWeight: 'bold',
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   info: {
     fontSize: 14,
     padding: 10,
-    
+    fontFamily: 'Helvetica Neue',
   },
   photo: {
     height: 150,

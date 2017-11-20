@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Button, TouchableHighlight, TextInput, ListView, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableHighlight, TextInput, ScrollView, ListView, ActivityIndicator } from 'react-native';
 import {Row} from './Row'
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
@@ -24,12 +24,13 @@ export default class Recipes extends Component {
   }
     
   onBack() {
+	const { navigate } = this.props.navigation;
     navigate('Main');
   }
     
   componentDidMount() {
         const { navigate } = this.props.navigation;
-          fetch(`http://food2fork.com/api/search?key=1ac1d8dde20033351e584a6e3f85300e&q=${this.recipe_search}`).then((response) => {
+          fetch(`http://food2fork.com/api/search?key=1ac1d8dde20033351e584a6e3f85300e&q=${this.recipe_search}&sort=r`).then((response) => {
               return response.json();
           })
           .then((data) => {
@@ -58,21 +59,21 @@ export default class Recipes extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <ActivityIndicator
             animating={this.state.animating}
             style={styles.spinner}
             color="#f44336"
             size="large"
             />
-            <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Back</Text></TouchableHighlight>
+            <TouchableHighlight style={styles.backButton} onPress={this.onBack}><Text style={styles.backButtonText}>Back</Text></TouchableHighlight>
             <ListView
               dataSource={this.state.dataSource}
               enableEmptySections={true}
               renderRow={(data) => <Row food={data} navigator={navigate} />}
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
-        </View>
+        </ScrollView>
     );
   }
 }
@@ -91,17 +92,18 @@ const styles = StyleSheet.create({
         left: 0,
         width: width,
         height: height,
-        backgroundColor: 'rgba(0,0,0,0.8)'
+        backgroundColor: '#FFFFFF'
     },
-    button: {
+    backButton: {
         justifyContent: 'center',
         alignItems: 'flex-start',
         height: 50,
         backgroundColor: 'rgba(244, 64, 52, 0.87)',
         paddingLeft: 5
     },
-    buttonText: {
+    backButtonText: {
         fontSize: 20,
-        color: 'rgba(0, 0, 0, 0.9)'
+		fontFamily: 'Helvetica Neue',
+        color: '#FFFFFF'
     }
 });
