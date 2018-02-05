@@ -4,55 +4,55 @@ var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
 export default class Main extends Component {
-  constructor(props) {
-      super(props);
+    constructor(props) {
+        super(props);
       
-      this.state = {
-          textInputValue: '',
-          warning: false,
-      }
+        this.state = {
+            textInputValue: '',
+            warning: false,
+        }
 	  
-      this.onForward = this.onForward.bind(this);
+        this.onForward = this.onForward.bind(this);
   }
 	
 
-  onForward() {
-      const { navigate } = this.props.navigation;
-      if (this.state.textInputValue.length < 1) {
-          Alert.alert(
-              'Warning',
-              'Please, provide one ore more ingredients.',
-              [
-                {text: 'OK', onPress: () => console.log('OK Pressed')},
-              ],
-              { cancelable: true }
-            )
-      } else {
-            navigate('Recipes', { recipe_search:  this.state.textInputValue });
-      }
-  }
+    onForward() {
+        const { navigate } = this.props.navigation;
+        if (this.state.textInputValue.length < 1) {
+            Alert.alert(
+                'Warning',
+                'Please, provide one ore more ingredients.',
+                [
+                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                ],
+                { cancelable: true }
+                )
+        } else {
+                navigate('Recipes', { recipe_search:  this.state.textInputValue });
+        }
+    }
     
-  render() {
-    const { navigate } = this.props.navigation;
-    return (
-        <KeyboardAvoidingView style={styles.container} behavior="padding">
-            <Image style={styles.background} source={require('./background.jpg')} />
-            <View style={styles.logoContainer}>
-                <Text style={styles.logo}>FirstBite</Text>
-                <View style={styles.searchBarContainer}>
-                    <Text style={styles.searchBarText}>INGREDIENTS YOU HAVE:</Text>
-                    <TextInput onChangeText={(text) => {
-                                                textVal = text.split(/[ ,]+/);
-                                                this.setState({textInputValue: textVal});
-                                                console.log(textVal);
-                                            }}
-                               style={styles.searchBar} underlineColorAndroid={'#575757'} />
+    render() {
+        const { navigate } = this.props.navigation;
+        return (
+            <KeyboardAvoidingView style={styles.container} behavior="padding">
+                <Image style={styles.background} source={require('./background.jpg')} />
+                <View style={styles.logoContainer}>
+                    <Text style={styles.logo}>FirstBite</Text>
+                    <View style={styles.searchBarContainer}>
+                        <Text style={styles.searchBarText}>INGREDIENTS YOU HAVE:</Text>
+                        <TextInput onChangeText={(text) => {
+                            textVal = text.split(/[ ,]+/);
+                            this.setState({textInputValue: textVal});
+                            console.log(textVal);
+                        }}
+                        style={styles.searchBar} />
+                    </View>
                 </View>
-            </View>
-            <TouchableOpacity title='Find' style={styles.findButton} onPress={this.onForward} color={'#f44336'}><Text style={styles.findButtonText}>FIND</Text></TouchableOpacity>
-        </KeyboardAvoidingView>
-    );
-  }
+                <TouchableOpacity title='Find' style={styles.findButton} onPress={this.onForward} color={'#f44336'}><Text style={styles.findButtonText}>FIND</Text></TouchableOpacity>
+            </KeyboardAvoidingView>
+        );
+    }
 }
 
 const styles = StyleSheet.create({

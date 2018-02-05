@@ -11,22 +11,12 @@ export default class fb extends Component {
         super(props);
     }
 
-    static stackNavigatorOptions = {
-        title: 'Main',
-        headerStyle: {
-            backgroundColor: '#FFFFFF'
-        },
-        headerTitleStyle: {
-            color: '#33333'
-        }
-    }
-
-    
     render() {        
         return <Screens />;
   }
 }
 
+/* All screens for rendering go here */
 const Screens = StackNavigator({
     Main: {screen: Main},
     Recipes: {screen: Recipes},
@@ -34,4 +24,3 @@ const Screens = StackNavigator({
 });
 
 AppRegistry.registerComponent('first-bite', () => screens);
-
